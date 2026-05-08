@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavadero CF — El Arte de la Limpieza | Zárate</title>
+    
+    <!-- Meta SEO Básica -->
+    <meta name="description" content="Descubrí una experiencia diferente en el cuidado de tu auto. Lavadero CF en Zárate: donde el detalle es nuestra prioridad y tu vehículo nuestra obra.">
+    <link rel="canonical" href="https://lavadero.bitrix24.site/">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lavadero.bitrix24.site/">
+    <meta property="og:title" content="Lavadero CF — Editorial de Estética Vehicular">
+    <meta property="og:description" content="Descubrí el estándar de limpieza que tu vehículo merece. Tratamientos acrílicos y limpieza de interiores premium.">
+    <meta property="og:image" content="https://lavadero.bitrix24.site/og-image.jpg">
+    <meta property="og:locale" content="es_AR">
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lavadero CF — El Arte del Detalle">
+    <meta name="twitter:description" content="Estética vehicular de lujo en Zárate. Cuidamos cada curva.">
+    <meta name="twitter:image" content="https://lavadero.bitrix24.site/og-image.jpg">
+
+    <!-- Google Tag Manager Snippet -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-LVDR001');
+    </script>
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* ==========================================================================
+           1. RESET Y VARIABLES (CSS Custom Properties)
+           ========================================================================== */
+        :root {
+            /* Colores Base */
+            --color-bg: #050505;
+            --color-bg-2: #0f0f0f;
+            
+            /* Colores de Marca */
+            --color-brand-primary: #0052CC;
+            --color-brand-rgb: 0, 82, 204;
+            --color-brand-hover: #003d99;
+            
+            /* Textos */
+            --color-text: #ffffff;
+            --color-muted: rgba(255, 255, 255, 0.5);
+            --color-border: rgba(255, 255, 255, 0.08);
+            
+            /* Tipografías */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Espaciados y Layout */
+            --section-gap: clamp(6rem, 12vw, 10rem);
+            --container-width: 92%;
+            --container-max: 1400px;
+            
+            /* Animaciones */
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-base: all 0.4s var(--ease-out);
+        }
+
+        /* Reset Básico */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        /* Textura Grain (Requisito Editorial) */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        /* ==========================================================================
+           2. ACCESIBILIDAD Y UTILIDADES
+           ========================================================================== */
+        .skip-to-content {
+            position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+            background: #fff; color: #000; padding: 1rem 2rem; z-index: 99999;
+            text-decoration: none; font-weight: 800; border-radius: 0 0 4px 4px;
+            transition: top 0.3s; text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .skip-to-content:focus { top: 0; }
+
+        *:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .wrap {
+            width: var(--container-width);
+            max-width: var(--container-max);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 900; line-height: 1.1; }
+
+        /* ==========================================================================
+           3. CURSOR CUSTOM DIFFERENCE
+           ========================================================================== */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            #cursor-difference {
+                width: 14px;
+                height: 14px;
+                background-color: #fff;
+                border-radius: 50%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                z-index: 10000;
+                mix-blend-mode: difference;
+                transform: translate(-50%, -50%);
+                transition: width 0.3s, height 0.3s, opacity 0.3s;
+            }
+            #cursor-difference.hover {
+                width: 60px;
+                height: 60px;
+            }
+            #cursor-difference.drag {
+                width: 80px;
+                height: 80px;
+                background-color: rgba(255,255,255,0.2);
+                border: 2px solid #fff;
+            }
+            #cursor-difference.hidden {
+                opacity: 0;
+            }
+        }
+
+        /* ==========================================================================
+           4. HEADER EDITORIAL (Mix Blend Mode)
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition-base);
+            /* Diferenciador Gamma */
+            mix-blend-mode: difference;
+        }
+        
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 0.25em; 
+            text-decoration: none; 
+            color: #fff; 
+        }
+        
+        .nav-links { display: flex; gap: 3.5rem; list-style: none; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            transition: opacity 0.3s;
+        }
+        .nav-links a:hover { opacity: 0.5; }
+
+        /* Hamburger oculto por defecto */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+            mix-blend-mode: difference;
+        }
+        .ham-line { width: 35px; height: 2px; background-color: #fff; transition: var(--transition-base); }
+
+        /* ==========================================================================
+           5. HERO (Tipografía Gigante)
+           ========================================================================== */
+        .hero { 
+            height: 100vh; 
+            min-height: 800px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            padding-bottom: 8vh; 
+            position: relative; 
+        }
+        
+        .hero-line { 
+            width: 100%; 
+            height: 1px; 
+            background: rgba(255,255,255,0.1); 
+            margin-bottom: 4rem; 
+            transform-origin: left;
+            transform: scaleX(0); /* Animado en JS */
+        }
+        
+        .hero-eyebrow { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.4em; 
+            color: var(--color-brand-primary); 
+            margin-bottom: 2rem; 
+            display: block; 
+            opacity: 0; /* Animado */
+        }
+        
+        .hero-title { 
+            font-size: clamp(4rem, 15vw, 16rem); 
+            line-height: 0.85; 
+            letter-spacing: -0.05em; 
+            text-transform: uppercase; 
+            color: #fff;
+        }
+        
+        .hero-title .word-mask { 
+            display: block; 
+            overflow: hidden; 
+            padding-bottom: 2vw; /* Espacio para descendentes */
+            margin-bottom: -2vw;
+        }
+        
+        .hero-title .word-inner { 
+            display: block; 
+            transform: translateY(100%); /* Animado en JS */
+        }
+        
+        .hero-title .word-inner span { color: var(--color-brand-primary); }
+
+        /* ==========================================================================
+           6. STATS (Banda Editorial)
+           ========================================================================== */
+        .stats-section { 
+            padding: 4rem 0; 
+            border-bottom: 1px solid var(--color-border); 
+        }
+        
+        .stats-row { 
+            display: flex; 
+            justify-content: space-between; 
+        }
+        
+        .stat-box { 
+            border-left: 1px solid var(--color-border); 
+            padding-left: 2rem; 
+        }
+        
+        .stat-box h3 { 
+            font-size: clamp(2.5rem, 4vw, 3.5rem); 
+            color: var(--color-brand-primary); 
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .stat-box h3 span.suffix { font-size: 0.6em; margin-left: 5px; color: var(--color-muted); font-family: var(--font-body); }
+        
+        .stat-box p { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.25em; 
+            color: var(--color-muted); 
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           7. CAROUSEL HORIZONTAL (Servicios)
+           ========================================================================== */
+        .carousel-section { 
+            overflow: hidden; 
+            background-color: #000; 
+            position: relative; 
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .carousel-container { 
+            display: flex; 
+            height: 100vh; 
+            min-height: 800px;
+            align-items: center; 
+            width: fit-content; 
+            padding: 0 15vw; 
+        }
+        
+        .carousel-card { 
+            width: 450px; 
+            flex-shrink: 0; 
+            margin-right: 8vw; 
+            background-color: var(--color-bg-2); 
+            padding: 4rem; 
+            border: 1px solid var(--color-border);
+            transition: var(--transition-base);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .carousel-card:hover { 
+            border-color: var(--color-brand-primary); 
+            background-color: rgba(var(--color-brand-rgb), 0.05);
+        }
+        
+        .c-num { 
+            font-family: var(--font-heading); 
+            font-size: 5rem; 
+            color: #fff;
+            opacity: 0.05; 
+            display: block; 
+            margin-bottom: 2rem; 
+            line-height: 1;
+            transition: opacity 0.4s;
+        }
+        
+        .carousel-card:hover .c-num { opacity: 0.2; }
+        
+        .carousel-card h3 { 
+            font-size: 2.2rem; 
+            margin-bottom: 1.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: -0.02em;
+        }
+        
+        .carousel-card p { 
+            color: var(--color-muted); 
+            margin-bottom: 3rem; 
+            font-size: 1.05rem; 
+        }
+        
+        .c-list { list-style: none; margin-top: auto; }
+        .c-list li { 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            margin-bottom: 1rem; 
+            color: var(--color-brand-primary); 
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .c-list li::before {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background-color: var(--color-brand-primary);
+        }
+
+        /* Indicador de arrastre */
+        .drag-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 10;
+        }
+        .drag-indicator::before, .drag-indicator::after {
+            content: '→';
+        }
+        .drag-indicator::before { content: '←'; }
+
+        /* ==========================================================================
+           8. TESTIMONIOS (Editorial)
+           ========================================================================== */
+        .section { padding: var(--section-gap) 0; }
+        
+        .testi-editorial { max-width: 1100px; margin: 0 auto; }
+        
+        .testi-item { 
+            margin-bottom: 8rem; 
+            border-bottom: 1px solid var(--color-border); 
+            padding-bottom: 5rem; 
+        }
+        
+        .testi-item h4 { 
+            font-family: var(--font-heading); 
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            margin-bottom: 2.5rem; 
+            line-height: 1.2; 
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        
+        .testi-item p { 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.3em; 
+            color: var(--color-brand-primary); 
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           9. PRECIOS (Minimalista)
+           ========================================================================== */
+        .pricing-editorial { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 5vw; 
+        }
+        
+        .p-card-ed { 
+            padding: 4rem 0; 
+            border-top: 1px solid var(--color-border); 
+            position: relative;
+        }
+        
+        .p-card-ed.featured { border-top: 4px solid var(--color-brand-primary); }
+        
+        .p-card-ed h3 { 
+            font-size: 1.6rem; 
+            margin-bottom: 2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+            color: #fff;
+        }
+        
+        .p-card-ed .price { 
+            font-size: 4.5rem; 
+            font-family: var(--font-heading); 
+            margin-bottom: 3rem; 
+            display: flex; 
+            align-items: baseline;
+            line-height: 1;
+        }
+        
+        .p-card-ed .price span.curr { font-size: 2rem; color: var(--color-brand-primary); margin-right: 0.5rem; }
+        
+        .p-card-ed ul { list-style: none; margin-bottom: 5rem; }
+        .p-card-ed li { 
+            padding: 1.5rem 0; 
+            border-bottom: 1px solid var(--color-border); 
+            font-size: 1.05rem; 
+            color: var(--color-muted); 
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .p-card-ed li svg { width: 15px; height: 15px; fill: #fff; opacity: 0.3; }
+        
+        .btn-ed { 
+            border: 1px solid #fff; 
+            padding: 1.5rem; 
+            display: block; 
+            text-align: center; 
+            text-decoration: none; 
+            color: #fff; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            transition: var(--transition-base);
+        }
+        
+        .btn-ed:hover { background: #fff; color: #000; }
+        
+        .p-card-ed.featured .btn-ed { 
+            background: var(--color-brand-primary); 
+            border-color: var(--color-brand-primary); 
+            color: #fff;
+        }
+        
+        .p-card-ed.featured .btn-ed:hover { background: var(--color-brand-hover); border-color: var(--color-brand-hover); }
+
+        /* ==========================================================================
+           10. IMPACTO (Frase Editorial Final)
+           ========================================================================== */
+        .impact-ed { padding: 12rem 0; text-align: center; }
+        #impact-frase { 
+            font-size: clamp(2.5rem, 8vw, 7.5rem); 
+            font-family: var(--font-heading); 
+            line-height: 0.9; 
+            text-transform: uppercase; 
+            letter-spacing: -0.04em; 
+        }
+        .impact-word { display: inline-block; opacity: 0; transform: translateY(40px); }
+
+        /* ==========================================================================
+           11. CONTACTO Y FOOTER
+           ========================================================================== */
+        .contact-ed { 
+            display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 10vw; 
+            align-items: flex-start; 
+        }
+        
+        .c-left h2 { 
+            font-size: clamp(4rem, 8vw, 6rem); 
+            line-height: 0.9; 
+            text-transform: uppercase; 
+            margin-bottom: 2rem; 
+            letter-spacing: -0.03em;
+        }
+        
+        .c-form-ed { margin-top: 5rem; }
+        
+        .input-ed { 
+            width: 100%; 
+            background: none; 
+            border: none; 
+            border-bottom: 2px solid var(--color-muted); 
+            padding: 2rem 0; 
+            color: #fff; 
+            font-size: 1.5rem; 
+            outline: none; 
+            transition: border-color 0.3s;
+            font-family: var(--font-body);
+        }
+        
+        .input-ed:focus { border-color: var(--color-brand-primary); }
+        .input-ed::placeholder { color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.1em; font-size: 1rem; }
+        
+        .btn-submit-ed { 
+            margin-top: 4rem; 
+            background: #fff; 
+            color: #000; 
+            border: none; 
+            padding: 1.8rem 5rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em;
+            cursor: pointer; 
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-submit-ed:hover { background: var(--color-brand-primary); color: #fff; transform: translateY(-5px); }
+
+        .c-right-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .stat-box-ed p {
+            color: var(--color-brand-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .stat-box-ed h3 {
+            font-size: 2.5rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        /* Footer */
+        footer { padding: 8rem 0 4rem; border-top: 1px solid var(--color-border); margin-top: 5rem; }
+        .f-row { display: flex; justify-content: space-between; align-items: flex-end; }
+        .f-copy { opacity: 0.4; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; }
+
+        /* Botón WhatsApp Flotante Minimalista */
+        .wa-float { 
+            position: fixed; 
+            bottom: 4rem; 
+            right: 4rem; 
+            background: #fff; 
+            color: #000; 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 900; 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            z-index: 1000; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .wa-float:hover { transform: scale(1.1) rotate(15deg); background: var(--color-brand-primary); color: #fff; }
+
+        /* ==========================================================================
+           12. RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .pricing-editorial, .contact-ed, .stats-row { grid-template-columns: 1fr; gap: 6rem; }
+            .hero-title { font-size: 16vw; }
+            .carousel-container { 
+                height: auto; min-height: auto; flex-direction: column; 
+                padding: 10vh 0; width: 100%; 
+            }
+            .carousel-card { width: 100%; margin-right: 0; margin-bottom: 2rem; padding: 3rem; }
+            .drag-indicator { display: none; }
+            .wa-float { width: 60px; height: 60px; bottom: 2rem; right: 2rem; font-size: 0.6rem; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 0; mix-blend-mode: normal; background: var(--color-bg); border-bottom-color: var(--color-border); }
+            .logo, .hamburger .ham-line { mix-blend-mode: normal; }
+            .hamburger { display: flex; }
+            .nav-links { 
+                position: fixed; inset: 0; background: var(--color-bg); 
+                flex-direction: column; justify-content: center; align-items: center; 
+                clip-path: circle(0% at 90% 10%); transition: clip-path 0.6s var(--ease-out); 
+            }
+            .nav-links.active { clip-path: circle(150% at 90% 10%); }
+            .nav-links a { font-size: 1.5rem; font-weight: 800; }
+            
+            .hero { padding-bottom: 15vh; }
+            .hero-line { margin-bottom: 2rem; }
+            .stat-box { border-left: none; border-bottom: 1px solid var(--color-border); padding-left: 0; padding-bottom: 2rem; }
+            
+            .f-row { flex-direction: column; align-items: flex-start; gap: 3rem; }
+            #cursor-difference { display: none; }
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- ==========================================================================
+         SISTEMA DE DATOS CENTRALIZADO (PASO 4)
+         Primer script del body
+         ========================================================================== -->
+    <script id="client-config">
+        const CLIENT = {
+            marca:       "Lavadero CF",
+            whatsapp:    "549347043462",
+            email:       "contacto@lavaderocf.com.ar",
+            ciudad:      "Zárate",
+            zona:        "Zárate y alrededores",
+            ctaMensaje:  "Hola Lavadero CF, vengo de su sitio web y quisiera consultar por un turno para mi vehículo.",
+            colorBrand:  "#0052CC",
+            colorRgb:    "0, 82, 204"
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const waMsg = encodeURIComponent(CLIENT.ctaMensaje);
+            document.querySelectorAll('[data-wa]').forEach(el => {
+                el.href = `https://wa.me/${CLIENT.whatsapp}?text=${waMsg}`;
+            });
+            document.querySelectorAll('[data-client]').forEach(el => {
+                const key = el.dataset.client;
+                if(CLIENT[key]) el.textContent = CLIENT[key];
+            });
+        });
+    </script>
+
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+
+    <!-- Cursor Personalizado Blend Mode -->
+    <div id="cursor-difference" aria-hidden="true"></div>
+
+    <!-- ==========================================================================
+         HEADER
+         ========================================================================== -->
+    <header role="banner">
+        <div class="wrap">
+            <nav class="nav-flex" role="navigation" aria-label="Navegación Primaria">
+                <a href="#top" class="logo" aria-label="Inicio">
+                    Lavadero <span data-client="marca">CF</span>
+                </a>
+                
+                <ul class="nav-links" id="nav-list">
+                    <li><a href="#servicios" class="hover-target">Tratamientos</a></li>
+                    <li><a href="#precios" class="hover-target">Inversión</a></li>
+                    <li><a data-wa href="#" class="hover-target" data-analytics="nav_wa">WhatsApp</a></li>
+                </ul>
+
+                <button class="hamburger hover-target" id="ham-toggle" aria-expanded="false" aria-label="Alternar menú">
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ==========================================================================
+             HERO (Editorial Type)
+             ========================================================================== -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="wrap">
+                <div class="hero-line" aria-hidden="true"></div>
+                <span class="hero-eyebrow"><span data-client="ciudad">Zárate</span> • Estética Vehicular</span>
+                <h1 class="hero-title" id="hero-title">
+                    <span class="word-mask"><span class="word-inner">Limpieza</span></span>
+                    <span class="word-mask"><span class="word-inner">Sin</span></span>
+                    <span class="word-mask"><span class="word-inner">Límites.</span></span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             STATS BAND
+             ========================================================================== -->
+        <section class="stats-section" aria-label="Nuestros números">
+            <div class="wrap">
+                <div class="stats-row">
+                    <article class="stat-box">
+                        <h3 class="stat-num">
+                            <span data-target="1000">0</span><span class="suffix">+</span>
+                        </h3>
+                        <p>Vehículos Restaurados</p>
+                    </article>
+                    <article class="stat-box">
+                        <h3 class="stat-num">
+                            <span data-target="100">0</span><span class="suffix">%</span>
+                        </h3>
+                        <p>Atención al Detalle</p>
+                    </article>
+                    <article class="stat-box">
+                        <h3 class="stat-num">
+                            <span data-target="5">0</span><span class="suffix" style="color:#FFD700;">★</span>
+                        </h3>
+                        <p>Satisfacción Total</p>
+                    </article>
+                    <article class="stat-box">
+                        <h3 class="stat-num">
+                            <span data-target="24">0</span><span class="suffix">hs</span>
+                        </h3>
+                        <p>Atención Continua</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SERVICIOS (Carousel Pinned)
+             ========================================================================== -->
+        <section class="carousel-section" id="servicios" aria-labelledby="servicios-title">
+            <!-- Indicador visual que invita a scrollear/arrastrar -->
+            <div class="drag-indicator">Scroll Horizontal</div>
+            
+            <div class="carousel-container" id="carousel-track">
+                <h2 id="servicios-title" class="sr-only" style="display:none;">Catálogo de Servicios</h2>
+
+                <!-- Servicio 1 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">01</span>
+                    <h3>Lavado Tradicional</h3>
+                    <p>Limpieza exterior artesanal con espumas premium de pH balanceado y secado técnico para evitar micro-rayas.</p>
+                    <ul class="c-list">
+                        <li>Espuma Activa Importada</li>
+                        <li>Microfibras de Secado Suave</li>
+                        <li>Limpieza Profunda de Llantas</li>
+                    </ul>
+                </article>
+
+                <!-- Servicio 2 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">02</span>
+                    <h3>Estética Interior</h3>
+                    <p>Restauración total de plásticos, acondicionamiento de cueros y eliminación de polvo en zonas de difícil acceso.</p>
+                    <ul class="c-list">
+                        <li>Nutrición UV para Plásticos</li>
+                        <li>Desinfección de Superficies</li>
+                        <li>Aromatización Persistente</li>
+                    </ul>
+                </article>
+
+                <!-- Servicio 3 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">03</span>
+                    <h3>Lavado de Motor</h3>
+                    <p>Desengrasado técnico seguro para componentes electrónicos, restaurando el aspecto original bajo el capot.</p>
+                    <ul class="c-list">
+                        <li>Aislamiento de Seguridad Electrónica</li>
+                        <li>Desengrasado Dieléctrico</li>
+                        <li>Protección de Mangueras</li>
+                    </ul>
+                </article>
+
+                <!-- Servicio 4 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">04</span>
+                    <h3>Tapizados</h3>
+                    <p>Extracción profunda de suciedad y manchas en todas las superficies textiles, revirtiendo el paso del tiempo.</p>
+                    <ul class="c-list">
+                        <li>Inyección y Extracción a Máquina</li>
+                        <li>Removedor de Manchas Específico</li>
+                        <li>Higiene y Eliminación de Ácaros</li>
+                    </ul>
+                </article>
+
+                <!-- Servicio 5 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">05</span>
+                    <h3>Acrílico</h3>
+                    <p>Protección duradera contra el clima y rayos UV con un nivel de brillo extremo y alta repelencia al agua.</p>
+                    <ul class="c-list">
+                        <li>Corrección de Pintura (Pulido)</li>
+                        <li>Brillo Espejo Constante</li>
+                        <li>Garantía de Protección (1 Año)</li>
+                    </ul>
+                </article>
+
+                <!-- Servicio 6 -->
+                <article class="carousel-card hover-target">
+                    <span class="c-num" aria-hidden="true">06</span>
+                    <h3>Encerado Premium</h3>
+                    <p>Finalización estética con ceras ricas en carnauba para resaltar la profundidad del color en vehículos exigentes.</p>
+                    <ul class="c-list">
+                        <li>Cera de Carnauba Importada</li>
+                        <li>Suavidad Extrema al Tacto</li>
+                        <li>Terminación de Showroom</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             TESTIMONIOS (Editorial List)
+             ========================================================================== -->
+        <section class="section" id="testimonios" aria-labelledby="testimonios-title">
+            <div class="wrap">
+                <h2 id="testimonios-title" class="sr-only" style="display:none;">Lo que dicen de nosotros</h2>
+                <div class="testi-editorial">
+                    <!-- Review 1 -->
+                    <article class="testi-item gs-reveal">
+                        <h4>"Dejaron mi auto como nuevo, súper detallistas en el interior. El mejor servicio de estética que probé en todo Zárate."</h4>
+                        <p>Martín G. — Cliente de Lavado Premium</p>
+                    </article>
+                    
+                    <!-- Review 2 -->
+                    <article class="testi-item gs-reveal">
+                        <h4>"El lavado de motor y la limpieza de tapizados fueron increíbles. Entregaron en tiempo y forma, súper profesionales."</h4>
+                        <p>Julieta R. — Cliente Frecuente</p>
+                    </article>
+                    
+                    <!-- Review 3 -->
+                    <article class="testi-item gs-reveal" style="border-bottom: none;">
+                        <h4>"Muy buena atención de todo el equipo. Los recomiendo sin dudarlo, mi auto nunca brilló tanto como ahora."</h4>
+                        <p>Fernando L. — Tratamiento Acrílico</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             IMPACTO (Typography Word by Word)
+             ========================================================================== -->
+        <section class="impact-ed" aria-hidden="true">
+            <div class="wrap">
+                <h2 id="impact-frase">
+                    El arte de <strong>preservar</strong> y cuidar lo que te mueve.
+                </h2>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             PRECIOS (Editorial Columns)
+             ========================================================================== -->
+        <section class="section" id="precios" aria-labelledby="precios-title">
+            <div class="wrap">
+                <h2 id="precios-title" class="sr-only" style="display:none;">Planes de Inversión</h2>
+                <div class="pricing-editorial">
+                    <!-- Básico -->
+                    <article class="p-card-ed gs-reveal hover-target">
+                        <h3>Plan Básico</h3>
+                        <div class="price"><span class="curr">$</span>6000</div>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Lavado Exterior Detallado</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Aspirado Rápido Habitáculo</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Secado Manual Técnico</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Renovador de Neumáticos</li>
+                        </ul>
+                        <a data-wa href="#" class="btn-ed" data-analytics="plan_1">Seleccionar</a>
+                    </article>
+
+                    <!-- Completo -->
+                    <article class="p-card-ed featured gs-reveal hover-target">
+                        <h3>Plan Completo</h3>
+                        <div class="price"><span class="curr">$</span>12000</div>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Todo lo del Plan Básico</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Baúl Detallado y Aspirado</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Encerado Rápido (Quick Detailer)</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Acondicionado de Plásticos</li>
+                        </ul>
+                        <a data-wa href="#" class="btn-ed" data-analytics="plan_2">Seleccionar</a>
+                    </article>
+
+                    <!-- Estético -->
+                    <article class="p-card-ed gs-reveal hover-target">
+                        <h3>Tratamiento Estético</h3>
+                        <div class="price"><span class="curr">$</span>35000</div>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Todo lo del Plan Completo</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Extracción Inyección de Tapizados</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Sellado Acrílico (Pulido Leve)</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Limpieza Profunda Motor</li>
+                        </ul>
+                        <a data-wa href="#" class="btn-ed" data-analytics="plan_3">Seleccionar</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             CONTACTO
+             ========================================================================== -->
+        <section class="section" id="contacto" aria-labelledby="contacto-title">
+            <div class="wrap">
+                <div class="contact-ed">
+                    <!-- Izquierda: Formulario -->
+                    <div class="c-left">
+                        <h2 id="contacto-title">Empecemos<br>Hoy.</h2>
+                        <div class="c-form-ed gs-reveal">
+                            <form id="gamma-form" aria-label="Formulario de contacto para agendar">
+                                <label for="g-email" class="sr-only" style="display:none;">Tu correo electrónico</label>
+                                <input type="email" class="input-ed hover-target" id="g-email" placeholder="Ingresá tu email..." required>
+                                <button type="submit" class="btn-submit-ed hover-target" data-analytics="submit_gamma">
+                                    Agendar vía WhatsApp
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Derecha: Datos de Contacto -->
+                    <div class="c-right-stats gs-reveal">
+                        <article class="stat-box-ed">
+                            <p>Línea Directa</p>
+                            <h3>+54 9 3470 43462</h3>
+                        </article>
+                        <article class="stat-box-ed">
+                            <p>Ubicación Física</p>
+                            <h3 data-client="ciudad">Zárate, Bs.As.</h3>
+                        </article>
+                        <article class="stat-box-ed">
+                            <p>Horario Operativo</p>
+                            <h3>8:00 — 18:00</h3>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer role="contentinfo">
+        <div class="wrap">
+            <div class="f-row">
+                <a href="#top" class="logo">
+                    Lavadero <span>CF</span>
+                </a>
+                <p class="f-copy">
+                    &copy; <span id="current-year"></span> Lavadero CF. Privacidad & Derechos Reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón WA Flotante Minimalista -->
+    <a data-wa href="#" class="wa-float hover-target" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
+        WhatsApp
+    </a>
+
+    <!-- ==========================================================================
+         JAVASCRIPT LOGIC & MODULES
+         ========================================================================== -->
+    <script>
+        'use strict';
+        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ----------------------------------------------------------------------
+           MÓDULO 3: CURSOR CUSTOM (Mix Blend Mode)
+           ---------------------------------------------------------------------- */
+        function initCursor() {
+            const cursor = document.getElementById('cursor-difference');
+            if(!cursor) return;
+
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                gsap.set(cursor, { x: mouseX, y: mouseY });
+            });
+
+            // Hover en enlaces
+            document.querySelectorAll('a, button, .hover-target').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+
+            // Hover especial en el carrusel para "drag" visual
+            const track = document.getElementById('carousel-track');
+            if(track) {
+                track.addEventListener('mouseenter', () => {
+                    cursor.classList.remove('hover');
+                    cursor.classList.add('drag');
+                });
+                track.addEventListener('mouseleave', () => cursor.classList.remove('drag'));
+            }
+        }
+
+        /* ----------------------------------------------------------------------
+           MÓDULO 2: REDUCED MOTION
+           ---------------------------------------------------------------------- */
+        const mm = gsap.matchMedia();
+
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            initGammaAnimations();
+            initCursor();
+        });
+
+        mm.add("(prefers-reduced-motion: reduce)", () => {
+            gsap.set('.word-inner, .gs-reveal, .impact-word, .hero-eyebrow, .hero-line', { opacity: 1, y: 0, scaleX: 1, transform: 'none' });
+            const cursor = document.getElementById('cursor-difference');
+            if(cursor) cursor.style.display = 'none';
+        });
+
+        /* ----------------------------------------------------------------------
+           ANIMACIONES PRINCIPALES GAMMA
+           ---------------------------------------------------------------------- */
+        function initGammaAnimations() {
+            // Hero Intro Line & Eyebrow
+            gsap.to('.hero-line', { scaleX: 1, duration: 1.5, ease: "power4.out", delay: 0.2 });
+            gsap.to('.hero-eyebrow', { opacity: 1, duration: 1, delay: 0.8 });
+
+            // Hero Giant Typography Intro
+            gsap.to('.hero-title .word-inner', { 
+                y: 0, 
+                duration: 1.5, 
+                stagger: 0.15, 
+                ease: "power4.out",
+                delay: 0.5
+            });
+
+            // Reveals Generales
+            gsap.utils.toArray('.gs-reveal').forEach(elem => {
+                gsap.fromTo(elem,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0, opacity: 1, duration: 1, ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+
+            // Impact Word-by-Word HTML Inject
+            const phrase = document.getElementById('impact-frase');
+            if(phrase) {
+                const words = phrase.innerHTML.trim().split(/(?=\s)|(?<=\s)/);
+                phrase.innerHTML = words.map(word => {
+                    if(word.trim() === '' || word.includes('<strong') || word.includes('</strong')) return word;
+                    return `<span style="display:inline-block; overflow:hidden;"><span class="impact-word" style="display:inline-block; transform:translateY(100%);">${word}</span></span>`;
+                }).join('');
+
+                gsap.to('.impact-word', {
+                    scrollTrigger: { trigger: phrase, start: "top 80%" },
+                    y: "0%", opacity: 1, stagger: 0.05, duration: 0.8, ease: "power3.out"
+                });
+            }
+
+            // MÓDULO 4: CAROUSEL HORIZONTAL CON DEBOUNCE (REQUISITO OBLIGATORIO)
+            let scrollTween;
+            let resizeTimer;
+            const track = document.getElementById('carousel-track');
+            
+            function buildCarousel() {
+                // Matar el tween existente si existe
+                if(scrollTween) {
+                    scrollTween.kill();
+                    scrollTween = null;
+                }
+                
+                // Remover estilos inline residuales de GSAP
+                gsap.set(track, { clearProps: "all" });
+                
+                // Solo activar el pin horizontal en pantallas grandes
+                if(window.innerWidth > 1024 && track) {
+                    const trackWidth = track.scrollWidth;
+                    const amountToScroll = trackWidth - window.innerWidth;
+                    
+                    scrollTween = gsap.to(track, {
+                        x: -amountToScroll,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".carousel-section",
+                            pin: true,
+                            scrub: 1,
+                            end: () => "+=" + amountToScroll,
+                            invalidateOnRefresh: true
+                        }
+                    });
+                }
+            }
+            
+            // Construcción inicial
+            buildCarousel();
+
+            // Resize Event con Debounce de 200ms
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    ScrollTrigger.refresh();
+                    buildCarousel();
+                }, 200);
+            });
+        }
+
+        /* ----------------------------------------------------------------------
+           STATS COUNTERS
+           ---------------------------------------------------------------------- */
+        document.querySelectorAll('[data-target]').forEach(el => {
+            const target = parseFloat(el.getAttribute('data-target'));
+            ScrollTrigger.create({
+                trigger: el,
+                start: "top 90%",
+                once: true,
+                onEnter: () => {
+                    gsap.to({ val: 0 }, {
+                        val: target, duration: 2.5, ease: "power2.out",
+                        onUpdate: function() { el.textContent = Math.floor(this.targets()[0].val); }
+                    });
+                }
+            });
+        });
+
+        /* ----------------------------------------------------------------------
+           MÓDULO 6: MOBILE MENU
+           ---------------------------------------------------------------------- */
+        const hamBtn = document.getElementById('ham-toggle');
+        const navLinksCtn = document.getElementById('nav-list');
+        
+        hamBtn.addEventListener('click', () => {
+            const isOpen = hamBtn.getAttribute('aria-expanded') === 'true';
+            hamBtn.setAttribute('aria-expanded', !isOpen);
+            navLinksCtn.classList.toggle('active');
+            document.body.style.overflow = !isOpen ? 'hidden' : '';
+        });
+
+        navLinksCtn.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamBtn.setAttribute('aria-expanded', 'false');
+                navLinksCtn.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ----------------------------------------------------------------------
+           MÓDULO 7: ANALYTICS Y CTA FORM
+           ---------------------------------------------------------------------- */
+        document.querySelectorAll('[data-analytics]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.dataLayer) {
+                    window.dataLayer.push({ event: 'cta_click', cta_id: el.getAttribute('data-analytics') });
+                }
+            });
+        });
+
+        const formGamma = document.getElementById('gamma-form');
+        if(formGamma) {
+            formGamma.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const mail = document.getElementById('g-email').value;
+                if(mail) {
+                    const finalStr = `${CLIENT.ctaMensaje} Mi email de contacto es: ${mail}`;
+                    if(window.dataLayer) window.dataLayer.push({ event: 'form_submit', cta_id: 'gamma_form' });
+                    window.open(`https://wa.me/${CLIENT.whatsapp}?text=${encodeURIComponent(finalStr)}`, '_blank', 'noopener,noreferrer');
+                }
+            });
+        }
+    </script>
+
+    <!-- ==========================================================================
+         SCHEMA.ORG JSON-LD (SEO)
+         ========================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoWash",
+      "name": "Lavadero CF",
+      "image": "https://lavadero.bitrix24.site/og-image.jpg",
+      "description": "Descubrí una experiencia diferente en el cuidado de tu auto. Lavadero CF en Zárate.",
+      "url": "https://lavadero.bitrix24.site/",
+      "telephone": "+549347043462",
+      "email": "contacto@lavaderocf.com.ar",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Zárate",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "areaServed": "Zárate y alrededores",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ]
+    }
+    </script>
+</body>
+</html>
